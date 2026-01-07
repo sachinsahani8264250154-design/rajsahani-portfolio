@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Raj Sahani | System Architect</title>
+    <meta name="description" content="Portfolio of Raj Sahani, a System Architect and Class 12 Technologist based in Ahmedabad. Specializing in Hardware, Odoo ERP, and High-Performance Computing.">
+    <meta name="keywords" content="Raj Sahani, System Architect, Ahmedabad, Odoo ERP, Hardware Engineer, Web Developer, Class 12">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. CORE VARIABLES --- */
+        :root {
+            --bg-deep: #020202;
+            --bg-panel: #0a0a0a;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff0055;
+            --neon-green: #00ff41;
+            --glass: rgba(10, 10, 10, 0.9);
+            --border: rgba(0, 243, 255, 0.3);
+        }
+
+        /* PROTECTION: DISABLE SELECT */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; user-select: none; -webkit-user-select: none; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: bg-pulse 10s infinite alternate;
+        }
+        @keyframes bg-pulse { 0% { background-size: 40px 40px; } 100% { background-size: 45px 45px; } }
+
+        /* --- 2. MATRIX SCANLINE --- */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--neon-cyan); opacity: 0.4; box-shadow: 0 0 20px var(--neon-cyan);
+            animation: scanline 6s linear infinite; z-index: 998; pointer-events: none;
+        }
+        @keyframes scanline { 0% { top: -10%; opacity: 0; } 10% { opacity: 0.4; } 100% { top: 110%; opacity: 0; } }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .section-padding { padding: 100px 0; }
+        
+        /* CENTER ALIGNMENT GLOBAL */
+        h1, h2, h3, h4, p { text-align: center; }
+        
+        h1, h2, h3, h4 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+        .mono-text { font-family: 'Share Tech Mono', monospace; color: var(--neon-green); font-size: 0.9rem; letter-spacing: 1px; text-align: center; display: block; }
+
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 0 10px var(--neon-cyan); }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; }
+
+        /* --- 3. HIGH-TECH GLITCH (GLOBAL - PHONE & PC) --- */
+        .glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            line-height: 1;
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        /* ENABLED FOR ALL SCREENS */
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Layer 1: Pink/Red Shift - SLOWED DOWN (5s) */
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-pink);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-1 5s infinite linear alternate-reverse;
+        }
+
+        /* Layer 2: Cyan Shift - SLOWED DOWN (4s) */
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--neon-cyan);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim-2 4s infinite linear alternate-reverse;
+        }
+
+        /* The Slicing Keyframes */
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(30px, 9999px, 10px, 0); }
+            20% { clip: rect(30px, 9999px, 80px, 0); }
+            40% { clip: rect(90px, 9999px, 100px, 0); }
+            60% { clip: rect(10px, 9999px, 60px, 0); }
+            80% { clip: rect(50px, 9999px, 20px, 0); }
+            100% { clip: rect(70px, 9999px, 90px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(10px, 9999px, 50px, 0); }
+            20% { clip: rect(80px, 9999px, 100px, 0); }
+            40% { clip: rect(10px, 9999px, 30px, 0); }
+            60% { clip: rect(60px, 9999px, 90px, 0); }
+            80% { clip: rect(20px, 9999px, 60px, 0); }
+            100% { clip: rect(40px, 9999px, 80px, 0); }
+        }
+
+        /* --- 4. HERO --- */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        
+        .typewriter {
+            font-family: 'Share Tech Mono', monospace; font-size: 1.5rem; color: var(--neon-cyan);
+            margin: 20px auto; height: 30px; border-right: 2px solid var(--neon-cyan);
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--neon-cyan); } }
+
+        .btn-cyber {
+            margin-top: 30px; padding: 15px 40px; background: transparent; color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan); font-family: 'Orbitron'; font-weight: bold;
+            cursor: pointer; position: relative; overflow: hidden; transition: 0.3s; text-decoration: none;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+        .btn-cyber:hover { background: var(--neon-cyan); color: black; box-shadow: 0 0 25px var(--neon-cyan); letter-spacing: 2px; }
+
+        /* --- 5. CARDS --- */
+        .card {
+            background: var(--bg-panel); border: 1px solid var(--border); padding: 30px; position: relative; transition: 0.3s;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--neon-pink); box-shadow: 0 0 30px rgba(255, 0, 85, 0.2); }
+        .card h3 { color: var(--neon-cyan); margin-bottom: 10px; font-size: 1.5rem; }
+        
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .hw-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .hw-img-grid img { width: 100%; height: 120px; object-fit: cover; opacity: 0.7; border: 1px solid #333; }
+
+        /* --- 6. SKILLS & TIMELINE --- */
+        .about-split { display: flex; gap: 50px; align-items: center; }
+        .about-img-box img { width: 100%; border: 1px solid var(--neon-cyan); opacity: 0.8; transition: 0.5s; }
+        .about-img-box:hover img { opacity: 1; box-shadow: 0 0 20px var(--neon-cyan); }
+        
+        /* Center Text in About Section */
+        .about-text { text-align: center; width: 100%; }
+        
+        .skill-item { margin-bottom: 15px; }
+        .skill-info { display: flex; justify-content: space-between; font-family: 'Share Tech Mono'; color: #aaa; margin-bottom: 5px; }
+        .bar-bg { width: 100%; height: 4px; background: #222; }
+        .bar-fill { height: 100%; background: var(--neon-cyan); width: 0; transition: width 1.5s ease-out; box-shadow: 0 0 10px var(--neon-cyan); }
+
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; top: 0; height: 100%; width: 2px;
+            background: linear-gradient(180deg, var(--neon-cyan), transparent); transform: translateX(-50%);
+        }
+        .time-node { position: relative; margin-bottom: 50px; width: 50%; padding: 0 40px; }
+        .time-node:nth-child(odd) { left: 0; text-align: right; }
+        .time-node:nth-child(even) { left: 50%; text-align: left; }
+        .node-dot {
+            position: absolute; top: 0; width: 16px; height: 16px; background: #000;
+            border: 2px solid var(--neon-pink); border-radius: 50%;
+            animation: dot-pulse 2s infinite;
+        }
+        @keyframes dot-pulse { 0% { box-shadow: 0 0 0 0 rgba(255,0,85, 0.7); } 100% { box-shadow: 0 0 0 10px rgba(255,0,85, 0); } }
+        .time-node:nth-child(odd) .node-dot { right: -9px; }
+        .time-node:nth-child(even) .node-dot { left: -9px; }
+        
+        .project-card { display: flex; flex-direction: column; background: var(--bg-panel); border: 1px solid #333; transition: 0.3s; }
+        .project-card:hover { border-color: var(--neon-green); transform: scale(1.02); }
+        .project-thumb img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .project-card:hover .project-thumb img { filter: grayscale(0%); }
+        .project-body { padding: 25px; }
+        .tag { font-size: 0.7rem; color: var(--neon-pink); border: 1px solid var(--neon-pink); padding: 3px 8px; margin-right: 5px; }
+
+        /* --- 7. MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            .section-header h2 { font-size: 2.2rem; word-wrap: break-word; }
+            .about-text h3 { font-size: 1.4rem !important; word-wrap: break-word; overflow-wrap: break-word; }
+            
+            /* Responsive Size for Mobile - WITH GLITCH ENABLED */
+            .glitch { font-size: 13vw; }
+            
+            .typewriter { font-size: 1rem; height: auto; white-space: normal; text-align: center; }
+            .about-split { flex-direction: column; }
+            
+            /* Center Timeline on Mobile */
+            .timeline::before { left: 50%; }
+            .time-node { width: 100%; left: 0 !important; text-align: center !important; padding: 0 20px; }
+            .node-dot { left: 50% !important; transform: translateX(-50%); }
+            
+            .card p, .about-text p { text-align: center; }
+        }
+
+        /* --- 8. FOOTER & MODALS --- */
+        footer { padding: 80px 0; background: #000; border-top: 1px solid #222; text-align: center; }
+        .stealth-link { color: #111; cursor: pointer; transition: 0.3s; } .stealth-link:hover { color: var(--neon-green); }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
+        .terminal { width: 100%; max-width: 500px; background: #000; border: 2px solid var(--neon-green); padding: 30px; font-family: 'Share Tech Mono', monospace; box-shadow: 0 0 30px rgba(0, 255, 65, 0.2); }
+        .cmd-input { background: transparent; border: none; border-bottom: 1px solid var(--neon-green); color: var(--neon-green); width: 100%; font-family: inherit; font-size: 1.2rem; padding: 10px 0; outline: none; margin-bottom: 20px; }
+        
+        #secret-page { display: none; height: 100vh; background: #000; color: var(--neon-pink); padding: 50px 20px; border: 4px solid var(--neon-pink); overflow-y: auto; text-align: center; }
+    </style>
+</head>
+<body oncontextmenu="return false">
+
+    <section class="hero">
+        <div class="mono-text">SYSTEM.INIT(USER: "RAJ_SAHANI");</div>
+        <h1 class="glitch" data-text="RAJ SAHANI">RAJ SAHANI</h1>
+        <div class="typewriter" id="typed-text"></div>
+        <p style="color: #888; max-width: 600px; margin-bottom: 40px; margin-top: 20px;">
+            Bridging the gap between raw silicon performance and elegant software architecture. 
+            Based in Ahmedabad. Currently upgrading reality.
+        </p>
+        <a href="#about" class="btn-cyber">INITIALIZE SEQUENCE</a>
+    </section>
+
+    <section id="about" class="section-padding container">
+        <div class="section-header reveal">
+            <h2>OPERATOR PROFILE</h2>
+            <p class="mono-text">IDENTITY_VERIFIED // CLASS_12_STUDENT</p>
+        </div>
+        <div class="about-split">
+            <div class="about-img-box reveal stagger-1" style="flex:1;">
+                <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&q=80" alt="Raj Sahani Workspace Setup">
+            </div>
+            <div class="about-text reveal stagger-2" style="flex:1.5;">
+                <h3 style="color: var(--neon-cyan); margin-bottom: 20px;">ENGINEERING DNA</h3>
+                <p style="margin-bottom: 20px; color: #ccc;">
+                    I am an 18-year-old technologist who refuses to accept hardware limitations. 
+                    I specialize in analyzing GPU architectures, <strong>building custom web platforms (like note-taking apps)</strong>, and deploying enterprise-grade ERPs.
+                </p>
+                <h4 style="margin-bottom: 15px; margin-top: 30px; color: white;">TECHNICAL PROFICIENCY</h4>
+                <div class="skill-bar-container">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>HARDWARE ARCHITECTURE</span><span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>WEB DEV & APPS</span><span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>SERVER OPS (LINUX/VPS)</span><span>85%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>FULL STACK (.NET/JS)</span><span>80%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <div class="section-header reveal">
+            <h2>HARDWARE ARSENAL</h2>
+            <p class="mono-text">EQUIPMENT_LOGS // DEPLOYED</p>
+        </div>
+        <div class="grid-3">
+            <div class="card reveal stagger-1">
+                <div class="mono-text">UNIT_01</div>
+                <h3>SILICON LAB</h3>
+                <p>Advanced GPU cluster used for benchmarking and RandomX algorithm research.</p>
+                <div class="hw-img-grid">
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400" alt="NVIDIA GPU Cluster for Mining">
+                    <img src="https://images.unsplash.com/photo-1555618568-15c0dd5c92e9?w=400" alt="Graphics Card Hardware">
+                </div>
+            </div>
+            <div class="card reveal stagger-2">
+                <div class="mono-text">UNIT_02</div>
+                <h3>SERVER RACK</h3>
+                <p>Custom Home Lab running Ubuntu Server. Hosts my Odoo ERP instance.</p>
+                <div class="hw-img-grid">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400" alt="Server Rack Infrastructure">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400" alt="Network Switch and Cabling">
+                </div>
+            </div>
+            <div class="card reveal stagger-3">
+                <div class="mono-text">UNIT_03</div>
+                <h3>DEV STATION</h3>
+                <p>Visual Studio Development Environment. Optimized for .NET Core.</p>
+                <div class="hw-img-grid">
+                    <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=400" alt="Visual Studio Code Development Environment">
+                    <img src="https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=400" alt="Programming Screen Code">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <div class="section-header reveal">
+            <h2>EXECUTION LOG</h2>
+            <p class="mono-text">TIMELINE_OF_OPERATIONS</p>
+        </div>
+        <div class="timeline">
+            <div class="time-node reveal">
+                <div class="node-dot"></div>
+                <div class="card">
+                    <h3 style="color:white;">2023: THE AWAKENING</h3>
+                    <p class="mono-text" style="color:var(--neon-pink);">CLASS 10</p>
+                    <p style="font-size: 0.9rem; color:#aaa;">Started deep-diving into PC components. Built my first custom rig.</p>
+                </div>
+            </div>
+            <div class="time-node reveal">
+                <div class="node-dot"></div>
+                <div class="card">
+                    <h3 style="color:white;">2024: SERVER DEPLOYMENT</h3>
+                    <p class="mono-text" style="color:var(--neon-pink);">CLASS 11</p>
+                    <p style="font-size: 0.9rem; color:#aaa;">Successfully deployed Odoo ERP on a VPS. Learned Linux command line and network security.</p>
+                </div>
+            </div>
+            <div class="time-node reveal">
+                <div class="node-dot"></div>
+                <div class="card">
+                    <h3 style="color:white;">2025: CURRENT STATE</h3>
+                    <p class="mono-text" style="color:var(--neon-pink);">CLASS 12</p>
+                    <p style="font-size: 0.9rem; color:#aaa;">Mastering C# .NET architecture and Monero mining algorithms. Preparing for computer engineering.</p>
+                </div>
+            </div>
+            <div class="time-node reveal">
+                <div class="node-dot" style="border-color: var(--neon-green); box-shadow: 0 0 15px var(--neon-green);"></div>
+                <div class="card" style="border-color: var(--neon-green);">
+                    <h3 style="color:white;">2026: FUTURE LOADING</h3>
+                    <p class="mono-text" style="color:var(--neon-green);">INNOVATION IS NOT STOPPED</p>
+                    <p style="font-size: 0.9rem; color:#aaa;">Expanding into Artificial Intelligence and Decentralized Networks. The system is evolving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding container">
+        <div class="section-header reveal">
+            <h2>DEPLOYED PROTOCOLS</h2>
+            <p class="mono-text">STATUS: ACTIVE</p>
+        </div>
+        <div class="grid-3">
+            <div class="project-card reveal stagger-1">
+                <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80" alt="Odoo ERP Dashboard">
+                </div>
+                <div class="project-body">
+                    <h3>ODOO ERP</h3>
+                    <p style="color:#aaa;">Self-hosted enterprise system on Linux VPS. Secured via SSL.</p>
+                    <div style="margin-top:10px;"><span class="tag">LINUX</span><span class="tag">ODOO</span></div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-2">
+                <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=800&q=80" alt="Monero Cryptocurrency Mining Node">
+                </div>
+                <div class="project-body">
+                    <h3>MONERO NODE</h3>
+                    <p style="color:#aaa;">High-efficiency mining rig tuned for RandomX.</p>
+                    <div style="margin-top:10px;"><span class="tag">CRYPTO</span><span class="tag">HARDWARE</span></div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-3">
+                <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80" alt=".NET Core Application Architecture">
+                </div>
+                <div class="project-body">
+                    <h3>.NET CORE APP</h3>
+                    <p style="color:#aaa;">Custom application architecture using C#.</p>
+                    <div style="margin-top:10px;"><span class="tag">C#</span><span class="tag">.NET</span></div>
+                </div>
+            </div>
+            <div class="project-card reveal stagger-1">
+                <div class="project-thumb">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80" alt="Custom Web Application Interface">
+                </div>
+                <div class="project-body">
+                    <h3>CUSTOM WEB APPS</h3>
+                    <p style="color:#aaa;">Building versatile websites and utilities, including dynamic note-taking platforms.</p>
+                    <div style="margin-top:10px;"><span class="tag">FULL STACK</span><span class="tag">WEB DEV</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RAJ SAHANI. SYSTEM ONLINE.</p>
+        <span class="stealth-link" onclick="openLogin()">Sys.Ver.5.1</span>
+    </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="terminal">
+            <div style="color:var(--neon-green); margin-bottom:20px;">> AUTHENTICATION REQUIRED...</div>
+            <div style="color:#fff; margin-bottom:20px; font-size:0.8rem;">
+                [1] Sharma Hitesh<br>[2] Vishal Chick<br>[3] Dhiraj Pal<br>[4] Malav Chauhan<br>[5] Rudra Thakor
+            </div>
+            <input type="text" id="username" class="cmd-input" placeholder="USER ID">
+            <input type="password" id="password" class="cmd-input" placeholder="PASSCODE">
+            <button class="btn-cyber" style="width:100%; margin-top:0;" onclick="login()">EXECUTE</button>
+            <div onclick="closeLogin()" style="color:red; text-align:center; margin-top:15px; cursor:pointer;">[ ABORT ]</div>
+            <div id="error-msg" style="color:red; margin-top:10px; text-align:center;"></div>
+        </div>
+    </div>
+
+    <div id="secret-page">
+        <h2 class="glitch" style="font-size:3rem; margin-bottom:30px;" data-text="ACCESS GRANTED">ACCESS GRANTED</h2>
+        <div style="border:1px dashed var(--neon-cyan); padding:30px; margin:20px auto; max-width:800px;">
+            <h2 id="secret-title" style="color:white; margin-bottom:20px;"></h2>
+            <div id="secret-content" style="color:#ddd; font-size:1.2rem;"></div>
+        </div>
+        <button class="btn-cyber" style="margin-top:30px;" onclick="location.reload()">LOGOUT</button>
+    </div>
+
+    <script>
+        // --- SOURCE CODE PROTECTION ---
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) { return false; } 
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } 
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } 
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } 
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        const textElement = document.getElementById("typed-text");
+        const phrases = ["SYSTEM ARCHITECT", "HARDWARE ENGINEER", "CLASS 12 STUDENT", "FULL STACK DEV"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                textElement.innerText = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.innerText = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let typeSpeed = isDeleting ? 50 : 100;
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
+            }
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+
+        function openLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLogin() { document.getElementById('loginModal').style.display = 'none'; }
+        async function login() {
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            try {
+                const res = await fetch('/.netlify/functions/login', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: u, password: p })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('loginModal').style.display = 'none';
+                    const sections = document.querySelectorAll('section, footer, .hero');
+                    sections.forEach(s => s.style.display = 'none');
+                    const secretPage = document.getElementById('secret-page');
+                    secretPage.style.display = 'block';
+                    document.getElementById('secret-title').innerText = data.profile.name;
+                    document.getElementById('secret-content').innerHTML = data.profile.content;
+                } else { document.getElementById('error-msg').innerText = "> ACCESS DENIED: " + data.message; }
+            } catch (err) { document.getElementById('error-msg').innerText = "> CONNECTION FAILED"; }
+        }
+    </script>
+</body>
+</html>
