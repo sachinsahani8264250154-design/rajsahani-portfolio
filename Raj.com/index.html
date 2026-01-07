@@ -470,41 +470,52 @@
         function openLogin() { document.getElementById('loginModal').style.display = 'flex'; }
         function closeLogin() { document.getElementById('loginModal').style.display = 'none'; }
         
-        function login() {
+async function login() {
             const u = document.getElementById('username').value;
             const p = document.getElementById('password').value;
             const errorMsg = document.getElementById('error-msg');
-            
-            errorMsg.innerText = "> VERIFYING...";
+
+            // UI Feedback
+            errorMsg.innerText = "> CONNECTING TO SERVER...";
             errorMsg.style.color = "var(--neon-cyan)";
 
-            // FAKE DELAY FOR HACKER EFFECT
-            setTimeout(() => {
-                // CHANGE YOUR PASSWORDS HERE
-                if ((u === '1' && p === 'admin') || (u === 'raj' && p === '1234')) {
-                    
-                    // SUCCESS: HIDE SITE, SHOW SECRET
+            try {
+                // TALK TO THE BACKEND
+                // This line sends your password to the secure hidden file we created
+                const response = await fetch('/.netlify/functions/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: u, password: p })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // SUCCESS: Server approved us
                     document.getElementById('loginModal').style.display = 'none';
-                    const sections = document.querySelectorAll('section, footer, .hero');
-                    sections.forEach(s => s.style.display = 'none');
+                    document.querySelectorAll('section, footer, .hero').forEach(s => s.style.display = 'none');
                     
                     const secretPage = document.getElementById('secret-page');
                     secretPage.style.display = 'block';
                     
-                    // SET SECRET CONTENT
-                    document.getElementById('secret-title').innerText = "WELCOME OPERATOR";
-                    document.getElementById('secret-content').innerHTML = 
-                        "SYSTEM INTEGRITY: 100%<br>ACCESS LEVEL: ADMIN<br><br>" + 
-                        "This is your secure private dashboard. No server required.";
-                        
+                    document.getElementById('secret-title').innerText = data.profile.name;
+                    document.getElementById('secret-content').innerHTML = data.profile.content;
                 } else {
-                    // FAILURE
-                    errorMsg.innerText = "> ACCESS DENIED: INVALID CREDENTIALS";
+                    // FAILURE: Server rejected us
+                    errorMsg.innerText = "> " + data.message;
                     errorMsg.style.color = "red";
                 }
+            } catch (err) {
+                // NETWORK ERROR (Backend not found)
+                console.error(err);
+                errorMsg.innerText = "> CONNECTION FAILED (SERVER OFFLINE)";
+                errorMsg.style.color = "red";
+            }
+        }
             }, 800);
         }
     </script>
 </body>
 
 </html>
+
